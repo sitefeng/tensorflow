@@ -313,7 +313,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         const float predictionValue = predictions(index);
         if (predictionValue > 0.05f) {
           std::string label = labels[index % predictions.size()];
-          NSString *labelObject = [NSString stringWithCString:label.c_str()];
+          NSString *labelObject = [NSString stringWithCString:label.c_str() encoding:NSUTF8StringEncoding];
           NSNumber *valueObject = [NSNumber numberWithFloat:predictionValue];
           [newValues setObject:valueObject forKey:labelObject];
         }
